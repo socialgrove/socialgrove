@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<title>SocialGrove</title>  
+  	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="socialgrove.js"></script>
+</head>
+  <body>
+	<!-- Placeholder for the table -->
+	<DIV ID="oTableContainer"></DIV>
+
+	<script type="text/javascript">
+	function fnInit()
+	{	
+	  // Declare variables and create the header, footer, and caption.
+	  var oTable = document.createElement("TABLE");
+	  var oTBody = document.createElement("TBODY");
+	  var oRow, oCell1, oCell2, oCell3,oImg, blog;
+	  var i, j;
+
+	  var stock = new Array();
+
+	  stock[0] = new Array("images/davidfinch.jpg","http://feeds.feedburner.com/davidsfinch","123");
+	  stock[1] = new Array("images/jasonfalls.jpg","http://feeds.feedburner.com/SocialMediaExplorer","100");
+	  stock[2] = new Array("images/jaygarmon.jpg","http://feeds.feedburner.com/TheWrittenWeird","55");
+	  
+	  // Insert the created elements into oTable.
+	  oTable.appendChild(oTBody);
+	  
+	  // Set the table's border width and colors.
+	  oTable.border=0;
+	  oTable.bgColor="lightslategray";
+	  
+	  // Insert rows and cells into bodies.
+	  for (i=0; i<stock.length; i++)
+	  {
+	    oRow = document.createElement("TR");
+		oTBody.appendChild(oRow);
+		oCell1 = document.createElement("TD");	      
+	    oImg = document.createElement("IMG");
+		oImg.src=stock[i][0];
+		oCell1.appendChild(oImg);
+	    oRow.appendChild(oCell1);
+	
+		oCell2 = document.createElement("TD");	
+		var div =  document.createElement("DIV");
+		div.id="content["+i+"]";
+		oCell2.appendChild(div);
+		oRow.appendChild(oCell2);
+			
+		oCell3 = document.createElement("TD");	 
+		var countDiv =  document.createElement("DIV");
+		countDiv.id="count["+i+"]";
+		oCell3.appendChild(countDiv);
+		oRow.appendChild(oCell3);
+	  }
+
+	  // Set the background color of the first body.
+	  oTBody.setAttribute("bgColor","lemonchiffon");
+		
+	  // Insert the table into the document tree.
+	  document.getElementById("oTableContainer").appendChild(oTable);
+	  //oTableContainer.appendChild(oTable);
+	  for (i=0; i<stock.length; i++){
+		getBlog(i,stock[i][1]);
+		var hiddenLink = document.createElement("INPUT");
+		hiddenLink.id="hiddenLink["+i+"]";
+		hiddenLink.type="hidden";
+	  }	
+	}
+	</script>	
+	<script language="javascript">
+		function getBlog(i,url) {
+		 	google.load('feeds', '1');
+	     	alert(url);
+		 	//var blog = new BlogPreview(document.getElementById("content["+i+"]"));
+	     	//blog.show(url);			
+	 		var feed = new google.feeds.Feed(url);
+		    feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
+		    feed.setNumEntries(this.options.numResults);
+		    feed.load(function process(result) {
+				alert(result.title);
+			}));
+	     	return false;
+	    }
+	</script>
+	<script>
+		function getTweetCount(i,url){
+			google.load('feeds', '1');
+			
+			
+			
+		}
+	</script>
+	
+	<script language="javascript">
+		window.onLoad=fnInit();
+	</script>
+  </body>
