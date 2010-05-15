@@ -25,6 +25,11 @@
         <servlet-class>authentication.PostServlet
         </servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>list</servlet-name>
+        <servlet-class>feeds.ListingServlet
+        </servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/signin</url-pattern>
@@ -40,6 +45,10 @@
     <servlet-mapping>
         <servlet-name>post</servlet-name>
         <url-pattern>/post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>list</servlet-name>
+        <url-pattern>/list</url-pattern>
     </servlet-mapping>
     <error-page>
         <exception-type>twitter4j.TwitterException</exception-type>
