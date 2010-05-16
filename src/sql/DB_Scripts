@@ -1,0 +1,35 @@
+-- Table: socialgrove."User"
+
+-- DROP TABLE socialgrove."User";
+
+CREATE TABLE socialgrove."User"
+(
+  userid numeric(100,0),
+  username character(100),
+  "imageURL" character(150),
+  "feedURL" character(200),
+  "twitterId" numeric(100,100)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE socialgrove."User" OWNER TO postgres;
+
+-- Table: socialgrove."twitterUser"
+
+-- DROP TABLE socialgrove."twitterUser";
+
+CREATE TABLE socialgrove."twitterUser"
+(
+  "twitterId" numeric(100,0) NOT NULL,
+  "twitterName" character(100),
+  "twitterImageURL" character(100),
+  "twitterScreenName" character(100),
+  "twitterLocation" character(100),
+  "twitterURL" character(100),
+  CONSTRAINT "twitterId" PRIMARY KEY ("twitterId")
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE socialgrove."twitterUser" OWNER TO postgres;
