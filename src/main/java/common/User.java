@@ -7,6 +7,28 @@ public class User {
 	private String twitterId;
 	private String feedURL;
 	private String imageURL;
+	private boolean active;
+	private boolean premium;
+	private String userDescription;
+	
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	public boolean isPremium() {
+		return premium;
+	}
+	public void setPremium(boolean premium) {
+		this.premium = premium;
+	}
+	public String getUserDescription() {
+		return userDescription;
+	}
+	public void setUserDescription(String userDescription) {
+		this.userDescription = userDescription;
+	}
 	
 	public int getUserId() {
 		return userId;
